@@ -19,10 +19,9 @@
             "args": [
                 "es",
                 "/home/boo/uni/2022-2023/T2/DS/output/output.txt",
-                "randombucket",
+                "242693",
                 "/home/boo/uni/2022-2023/T2/DS/lab/lab1/lab1/resources/twitter-eurovision-2018/twitter-data-from-2018-eurovision-final/Eurovision3.json",
                 "/home/boo/uni/2022-2023/T2/DS/lab/lab1/lab1/resources/twitter-eurovision-2018/twitter-data-from-2018-eurovision-final/Eurovision4.json",
-                "/home/boo/uni/2022-2023/T2/DS/lab/lab1/lab1/resources/twitter-eurovision-2018/twitter-data-from-2018-eurovision-final/Eurovision5.json",
             ],
         }
     ]

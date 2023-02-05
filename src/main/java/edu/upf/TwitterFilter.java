@@ -9,7 +9,7 @@ import edu.upf.uploader.S3Uploader;
 
 public class TwitterFilter {
     public static void main(String[] args) {
-        String userU = "u189530";
+        String userU = "uxxxxxx";
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
@@ -41,8 +41,5 @@ public class TwitterFilter {
         long end = System.currentTimeMillis();
         System.out.println("Total time taken for processing and uploading: " + (end - start) + "ms");
     }
-    // mvn exec:java -Dexec.mainClass="edu.upf.TwitterFilter" -Dexec.args="es
-    // /home/boo/uni/2022-2023/T2/DS/output/output.txt 242693
-    // /home/boo/uni/2022-2023/T2/DS/lab/lab1/lab1/resources/twitter-eurovision-2018/twitter-data-from-2018-eurovision-final/Eurovision3.json"
 
 }

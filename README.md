@@ -35,6 +35,6 @@ The lab uses two external libraries:
 
 ### Considerations
 - Ensure that the necessary AWS credentials are setup before attempting to run the app. This can be done through environment variables or through the AWS CLI.
-- The input files should be in JSON format and should contain valid tweets in the format as specified by the SimplifiedTweet class.
+- The input files should be in JSON format.
 - The output file should be in plain text format.
 - The app may take some time to process large collections of files and upload the output file to S3, depending on the size and number of files processed.

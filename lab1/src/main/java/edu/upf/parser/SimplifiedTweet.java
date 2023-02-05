@@ -21,7 +21,7 @@ import java.util.Optional;
 public class SimplifiedTweet {
 
   // The JsonParser is used to parse JSON strings into JsonObjects
-  private static JsonParser parser = new JsonParser();
+  private static Gson parser = new Gson();
 
   private final long tweetId; // the id of the tweet ('id')
   private final String text; // the content of the tweet ('text')
@@ -60,7 +60,7 @@ public class SimplifiedTweet {
   public static Optional<SimplifiedTweet> fromJson(String jsonStr) {
     try {
       // Parse the JSON string into a JsonObject
-      JsonObject json = parser.parse(jsonStr).getAsJsonObject();
+      JsonObject json = parser.fromJson(jsonStr, JsonObject.class);
       long tweetId = json.get("id").getAsLong();
       String text = json.get("text").getAsString();
       JsonObject user = json.get("user").getAsJsonObject();

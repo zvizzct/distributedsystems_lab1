@@ -9,12 +9,16 @@ import edu.upf.uploader.S3Uploader;
 
 public class TwitterFilter {
     public static void main(String[] args) {
+        String userU = "u189530";
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
         String bucket = argsList.get(2);
         System.out.println("Language: " + language + ". Output file: " + outputFile +
                 ". Destination bucket: " + bucket);
+
+        long start = System.currentTimeMillis();
+
         for (String inputFile : argsList.subList(3, argsList.size())) {
 
             System.out.println("Processing: " + inputFile);
@@ -27,14 +31,18 @@ public class TwitterFilter {
         }
 
         try {
-            final S3Uploader uploader = new S3Uploader(bucket, "lab1", "default");
+            final S3Uploader uploader = new S3Uploader(bucket, "lsds2022.lab1.output." + userU + "/" + language,
+                    "default");
             uploader.upload(Arrays.asList(outputFile));
         } catch (Exception e) {
             System.err.println("ERROR uploading to S3: " + e.getMessage());
         }
+
+        long end = System.currentTimeMillis();
+        System.out.println("Total time taken for processing and uploading: " + (end - start) + "ms");
     }
-    // java -cp
-    // target/classes:~/.m2/repository/junit/junit/4.11/junit-4.11.jar:~/.m2/repository/com/amazonaws/aws-java-sdk-s3/1.12.399/aws-java-sdk-s3-1.12.399.jar:~/.m2/repository/org/jsoup/jsoup/1.13.1/jsoup-1.13.1.jar:~/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar
-    // edu.upf.TwitterFilter
+    // mvn exec:java -Dexec.mainClass="edu.upf.TwitterFilter" -Dexec.args="es
+    // /home/boo/uni/2022-2023/T2/DS/output/output.txt 242693
+    // /home/boo/uni/2022-2023/T2/DS/lab/lab1/lab1/resources/twitter-eurovision-2018/twitter-data-from-2018-eurovision-final/Eurovision3.json"
 
 }

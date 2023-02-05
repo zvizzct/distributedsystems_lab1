@@ -18,6 +18,12 @@ Example: `java -cp lab1-1.0.jar edu.upf.TwitterFilter es /tmp/output.txt testbuc
 
 This command will read 3 files (Eurovision3.json, Eurovision4.json, Eurovision5.json), generate a new output file `/tmp/output-es.txt` containing all the Spanish (es) language tweets, and then upload the file to an S3 bucket named `testbucket`.
 
+### Testing
+The following JUnit tests were implemented to test the functionality of the SimplifiedTweet class:
+
+- `fromJsonTest` tests the successful conversion of a JSON string to a `SimplifiedTweet` object
+- `fromJsonWithMissingFieldTest` tests the conversion of a JSON string with a missing field to a `SimplifiedTweet` object and asserts that the missing field is set to a default value
+- `fromJsonFailureTest` tests the failure of converting an invalid JSON string to a `SimplifiedTweet` object and asserts that the result is an empty Optional
 
 ### Dependencies
 The lab uses two external libraries:
@@ -26,3 +32,9 @@ The lab uses two external libraries:
 - AWS-SDK for Amazon S3 (version 1.12.399) created by Amazon, to access S3 from Java code.
 - JUnit (version 4.13.1) for testing.
 - JSoup (version 1.15.3) for parsing HTML.
+
+### Considerations
+- Ensure that the necessary AWS credentials are setup before attempting to run the app. This can be done through environment variables or through the AWS CLI.
+- The input files should be in JSON format and should contain valid tweets in the format as specified by the SimplifiedTweet class.
+- The output file should be in plain text format.
+- The app may take some time to process large collections of files and upload the output file to S3, depending on the size and number of files processed.

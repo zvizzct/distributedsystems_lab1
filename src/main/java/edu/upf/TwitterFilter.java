@@ -9,7 +9,6 @@ import edu.upf.uploader.S3Uploader;
 
 public class TwitterFilter {
     public static void main(String[] args) {
-        String userU = "uxxxxxx";
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
@@ -25,14 +24,15 @@ public class TwitterFilter {
             try {
                 final FileLanguageFilter filter = new FileLanguageFilter(inputFile, outputFile);
                 filter.filterLanguage(language);
+                // print how many tweets were filtered
             } catch (Exception e) {
                 System.err.println("ERROR filtering the file: " + e.getMessage());
             }
+
         }
 
         try {
-            final S3Uploader uploader = new S3Uploader(bucket, "lsds2022.lab1.output." + userU + "/" + language,
-                    "default");
+            final S3Uploader uploader = new S3Uploader(bucket, language, "default");
             uploader.upload(Arrays.asList(outputFile));
         } catch (Exception e) {
             System.err.println("ERROR uploading to S3: " + e.getMessage());

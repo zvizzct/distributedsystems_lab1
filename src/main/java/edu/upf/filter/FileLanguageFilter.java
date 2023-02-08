@@ -59,4 +59,5 @@ public class FileLanguageFilter implements LanguageFilter {
             throw new Exception("An error occurred while filtering the language", e);
         }
     }
+
 }
